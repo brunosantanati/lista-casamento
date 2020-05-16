@@ -1,0 +1,9 @@
+.header {
+	box-sizing: border-box;
+	padding-top: 20px;
+	background-color: #f66;
+	height: 70px;
+	background-image: url('../img/logo.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
