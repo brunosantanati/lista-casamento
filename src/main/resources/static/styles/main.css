@@ -15,6 +15,10 @@ body{
 	color: #777;
 }
 
+#conteudo-modal{
+	word-wrap: break-word;
+}
+
 label {
     margin-top: 10px;
 }
