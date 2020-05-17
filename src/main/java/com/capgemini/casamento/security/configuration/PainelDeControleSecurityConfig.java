@@ -1,5 +1,6 @@
 package com.capgemini.casamento.security.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -8,19 +9,19 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.capgemini.casamento.security.service.UsuarioService;
+
 @Configuration
 @EnableWebSecurity
 public class PainelDeControleSecurityConfig  extends WebSecurityConfigurerAdapter{
 	
+	@Autowired
+	private UsuarioService usuarioService;
+
 	@Override
-	public void configure(AuthenticationManagerBuilder builder) throws Exception {
-		builder
-			.inMemoryAuthentication()
-				.withUser("bruno")
-				.password(new BCryptPasswordEncoder().encode("123456"))
-				.roles("ADMIN")
-			.and()
-				.passwordEncoder(new BCryptPasswordEncoder());
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(usuarioService)
+			.passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
 	@Override
