@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Minha Lista</title>
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+	<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
+	<link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+
+<body>
+	
+	<div th:replace="fragmentos/header :: header"></div>
+	
+	<section class="conteudo">
+		<div class="container-fluid">
+        	<div class="row">
+        		<div class="col-sm-1"></div>
+            	<div class="col-sm-10">
+            		<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Nome</th>
+								<th>E-mail</th>
+								<th>Telefone</th>
+								<th>Adultos</th>
+								<th>Crianças(até 10 anos)</th>
+								<th>Confirmado</th>
+								<th>Mensagem</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="convidado : ${convidados}">
+								<td th:text="${convidado.nome}"></td>
+								<td th:text="${convidado.email}"></td>
+								<td th:text="${convidado.telefone}"></td>
+								<td th:text="${convidado.quantidadeAdultos}"></td>
+								<td th:text="${convidado.quantidadeCriancas}"></td>
+								<td th:text="${convidado.presencaConfirmada} ? 'Sim' : 'Não'"></td>
+								<td th:text="${convidado.mensagem}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+            	<div class="col-sm-1"></div>
+			</div>
+		</div>
+	</section>
+
+</body>
+
+</html>
