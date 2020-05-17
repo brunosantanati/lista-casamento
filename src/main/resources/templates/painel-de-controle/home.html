@@ -9,6 +9,8 @@
 	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
 	<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
 	<link th:href="@{/styles/main.css}" rel="stylesheet" />
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </head>
 
 <body>
@@ -40,7 +42,10 @@
 								<td th:text="${convidado.quantidadeAdultos}"></td>
 								<td th:text="${convidado.quantidadeCriancas}"></td>
 								<td th:text="${convidado.presencaConfirmada} ? 'Sim' : 'Não'"></td>
-								<td th:text="${convidado.mensagem}"></td>
+								<td>
+									<a href="#modalParaMensagem" data-toggle="modal" data-target="#modalParaMensagem" 
+										th:attr="data-object-msg=${convidado.mensagem}" class="btn btn-large">Ver</a>
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -49,6 +54,35 @@
 			</div>
 		</div>
 	</section>
+
+	<!-- Modal -->
+	<div class="modal fade" id="modalParaMensagem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Mensagem</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div id="conteudo-modal"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"	data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		$('#modalParaMensagem').on('show.bs.modal', function (event) {
+			var linkClicado = $(event.relatedTarget) // Link que abriu o modal
+		  	var mensagem = linkClicado.data('object-msg') // Extrair info do atributo data-*
+		  	var modal = $(this)
+		  	modal.find('#conteudo-modal').text(mensagem)
+		})
+	</script>
 
 </body>
 
