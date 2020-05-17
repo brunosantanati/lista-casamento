@@ -28,10 +28,10 @@ public class ConfirmarPresencaController {
 		
 	}
 	
-	@PostMapping("confirmar-presenca")
+	@PostMapping("presenca-confirmada")
 	public String confirmarPresenca(Convidado convidado) {
 		convidadoRepository.save(convidado);
-		return "sucesso";
+		return "presenca-confirmada";
 	}
 	
 }
