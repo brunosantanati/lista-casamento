@@ -3,6 +3,7 @@ package com.capgemini.casamento.security.configuration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,11 +24,19 @@ public class PainelDeControleSecurityConfig  extends WebSecurityConfigurerAdapte
 	}
 	
 	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/**.html", "/webjars/**", "/styles/**", "/img/**");
+	}
+	
+	@Override
 	protected void configure(HttpSecurity http) throws Exception{
-		http.antMatcher("/painel-de-controle/**")
-				.authorizeRequests().anyRequest().hasRole("ADMIN")
-			.and()
-				.httpBasic();
+		http
+			.authorizeRequests()
+			    .antMatchers("/lista-de-casamento/**").permitAll()
+			    .antMatchers("/painel-de-controle/**").hasRole("ADMIN")
+			    .anyRequest().authenticated()
+		    .and()
+	        	.formLogin();
 	}
 
 }
