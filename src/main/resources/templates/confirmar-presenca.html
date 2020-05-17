@@ -13,15 +13,52 @@
 
 <body>
 
-	<header class="header">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					
-				</div>
+	<div th:replace="fragmentos/header :: header"></div>
+	
+	<section class="conteudo">
+		<div class="container-fluid">
+        	<div class="row">
+        		<div class="col-sm-4"></div>
+            	<div class="col-sm-4">
+	
+					<form method="POST" th:object="${convidado}" th:action="@{/lista-de-casamento/confirmar-presenca}">
+						<div class="form-group formulario">
+						
+							<div>
+						        <label for="presencaRadio1">Eu vou</label>
+						        <input type="radio" name="presencaRadios" id="presencaRadio1" value="1" th:field="*{presencaConfirmada}" />
+						        
+						        <label for="presencaRadio2">Não vou</label>
+						        <input type="radio" name="presencaRadios" id="presencaRadio2" value="0" th:field="*{presencaConfirmada}" />
+					        </div>
+					        
+							<label for="nome">Nome:</label>
+							<input type="text" class="form-control" id="nome" placeholder="Nome" th:field="*{nome}" />
+							
+							<label for="email">E-mail:</label>
+							<input type="text" class="form-control" id="email" placeholder="E-mail" th:field="*{email}" />
+							
+							<label for="telefone">Telefone:</label>
+							<input type="text" class="form-control" id="telefone" placeholder="Telefone" th:field="*{telefone}" />
+							
+							<label for="adultos">Adultos:</label>
+							<input type="text" class="form-control" id="adultos" placeholder="Qtde. Adultos" th:field="*{quantidadeAdultos}" />
+							
+							<label for="criancas">Crianças (até 10 anos):</label>
+							<input type="text" class="form-control"	id="criancas" placeholder="Qtde. Crianças" th:field="*{quantidadeCriancas}" />
+							
+							<label for="mensagem">Mensagem:</label>
+							<textarea rows="4" cols="50" class="form-control" id="mensagem" placeholder="Mensagem" th:field="*{mensagem}" />
+							
+							<button type="submit" class="btn btn-danger botao">Adicionar</button>
+						</div>
+					</form>
+							
+            	</div>
+            	<div class="col-sm-4"></div>
 			</div>
 		</div>
-	</header>
+	</section>
 
 </body>
 

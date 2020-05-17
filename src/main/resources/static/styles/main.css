@@ -1,9 +1,44 @@
+body{
+	margin: 0px;
+}
+
 .header {
-	box-sizing: border-box;
-	padding-top: 20px;
 	background-color: #f66;
 	height: 70px;
 	background-image: url('../img/logo.png');
 	background-repeat: no-repeat;
 	background-position: center;
+}
+
+.conteudo{
+	margin: 20px;
+	color: #777;
+}
+
+label {
+    margin-top: 10px;
+}
+
+.botao{
+	margin-top: 10px;
+}
+
+.container-centralizado {
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    z-index: 15;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -200px;
+    text-align: center;
+  }
+
+.icone-sucesso{
+    width: 250px;
+}
+
+.texto-successo{
+    font-size: 28px;
+    color: #f66;
 }

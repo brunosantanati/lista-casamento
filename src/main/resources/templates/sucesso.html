@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>Presen&ccedil;a Confirmada</title>
+	<link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+
+<body>
+	
+	<div th:replace="fragmentos/header :: header"></div>
+	
+	<div class="container-centralizado">
+	    <img th:src="@{/img/sucesso.png}" alt="Imagem Sucesso" class="icone-sucesso"/>
+	    <div class="texto-successo">Obrigado por confirmar presen&ccedil;a!</div>
+	</div>
+
+</body>
+
+</html>
