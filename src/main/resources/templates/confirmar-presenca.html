@@ -17,9 +17,14 @@
 	
 	<section class="conteudo">
 		<div class="container-fluid">
-        	<div class="row">
-        		<div class="col-sm-4"></div>
-            	<div class="col-sm-4">
+		
+			<div>
+            	<h2 class="titulo-confirmacao-presenca">Confirmação de presença</h2>
+				<h4 class="titulo-confirme-presenca">Confirme abaixo a sua presença no casamento de <span class="nomes-noivos">Fulana & Ciclano</span></h4>
+			</div>
+		
+        	<div class="row formulario">
+            	<div class="col-sm-4 col-sm-push-4">
 	
 					<form method="POST" th:object="${convidado}" th:action="@{/lista-de-casamento/presenca-confirmada}">
 						<div class="form-group formulario">
@@ -55,7 +60,6 @@
 					</form>
 							
             	</div>
-            	<div class="col-sm-4"></div>
 			</div>
 		</div>
 	</section>
