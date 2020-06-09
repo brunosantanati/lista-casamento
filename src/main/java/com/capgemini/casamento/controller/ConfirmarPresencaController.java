@@ -24,6 +24,9 @@ public class ConfirmarPresencaController {
 		
 		modelAndView.addObject(new Convidado());
 		
+		byte[] adultosQtde = {1, 2, 3, 4, 5};
+		modelAndView.addObject("adultosQtde", adultosQtde);
+		
 		return modelAndView;
 		
 	}

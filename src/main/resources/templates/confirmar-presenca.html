@@ -46,11 +46,15 @@
 							<label for="telefone">Telefone:</label>
 							<input type="text" class="form-control" id="telefone" placeholder="Telefone" th:field="*{telefone}" />
 							
-							<label for="adultos">Adultos:</label>
-							<input type="text" class="form-control" id="adultos" placeholder="Qtde. Adultos" th:field="*{quantidadeAdultos}" />
+							<label for="adultos">Adultos:</label>						
+							<select class="form-control" id="adultos" th:field="*{quantidadeAdultos}">
+    							<option th:each="qtde : ${adultosQtde}" th:value="${qtde}" th:text="${qtde}"></option>
+    						</select>
 							
 							<label for="criancas">Crianças (até 10 anos):</label>
-							<input type="text" class="form-control"	id="criancas" placeholder="Qtde. Crianças" th:field="*{quantidadeCriancas}" />
+							<select class="form-control" id="criancas" th:field="*{quantidadeCriancas}">
+    							<option th:each="n : ${#numbers.sequence(0,5)}" th:value="${n}" th:text="${n}"></option>
+    						</select>
 							
 							<label for="mensagem">Mensagem:</label>
 							<textarea rows="4" cols="50" class="form-control" id="mensagem" placeholder="Mensagem" th:field="*{mensagem}" />
